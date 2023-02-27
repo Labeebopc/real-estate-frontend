@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    background-image: url("../images/realestate.jpg");
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: cover;
+    height: 100%;
+}
+h1{
+    margin-top: 100px;
+    margin-left: 150px;
+    color: darkblue;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    column-gap: 50px;
+    margin-left: 200px;
+}
+input{
+    width: 350px;
+    height: 30px;
+    border-radius: 30px;
+    border:none;
+    text-align: center;
+}
+.user:focus {
+    border:none;
+  }
+.click{
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    margin-left: 100px;
+    border-radius: 30px;
+    border: none;
+}
+.signin{
+    background-color: rgb(83, 83, 221);
+    color: whitesmoke;
+}
