@@ -1,0 +1,82 @@
+.header-container{
+    background-color: #F5F5F5;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.header-container h4{
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 31px;
+    text-transform: uppercase;
+    color: #7d7d7d;
+    margin: 10px;
+    padding-top: 10px;
+}
+
+.tab-headings{
+    background-color: #F5F5F5;
+    display: flex;
+    justify-content: space-evenly;
+    /* border: 1px solid gray; */
+    /* padding: 10 10px 20px 20px; */
+    border-radius: 50px;
+}
+
+.tab-heading-selected{
+    align-items: center;
+    background-color: rgba(106, 180, 248, 1);
+    border-radius: 500px;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    color: white;
+}
+
+.tab-headings .tab-heading-selected :first-child{
+    background-color: #FFFFFF;;
+    padding: 5px;
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    color: black;
+}
+
+.tab-headings .tab-heading-selected :last-child{
+    background-color: rgba(106, 180, 248, 1);
+    padding: 5px;
+    border-radius: 500px;
+    text-align: center;
+}
+
+
+.tab-heading{
+    align-items: center;
+    background-color: #FFFFFF;;
+    border-radius: 500px;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    color: white;
+}
+
+.tab-headings .tab-heading :first-child{
+    background-color: rgba(106, 180, 248, 1);
+    padding: 5px;
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    color: black;
+}
+
+.tab-headings .tab-heading :last-child{
+    background-color: #FFFFFF;;
+    padding: 5px;
+    border-radius: 500px;
+    text-align: center;
+    color: rgb(8, 7, 7);
+}
