@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import './property-details.css'
 
@@ -9,30 +9,41 @@ const PropertyDetails = () => {
     const basicInfo = location.state.basicInfo
     //console.log(location.state);
 
+    // For checking the mandotary field errors
+    const [isValied, setIsValied] = useState(false)
+
+     // To get realtime update of mandatory field and show error according to this
+     const [requiredField, setRequiredField] = useState({length:"", breadth:"",totalArea:"",areaUnit:"", noOfBHK:"", noOfFloors:""})
+
     // For navigating onClick
     const navigation = useNavigate()
 
     // Since we dont want realtime UI update, we are using useRef as performance optimization
     const propertyDetails = useRef({
-        length: "",
-        breadth: "",
-        totalArea: "",
+        length: 0,
+        breadth: 0,
+        totalArea: 0,
         areaUnit: "",
-        noOfBHK: "",
-        noOfFloors: "",
-        attached: "",
-        westernToilet: "",
-        furnished: "",
-        carParking: "",
-        lift: "",
-        electricity: "",
+        noOfBHK: 0,
+        noOfFloors: 0,
+        attached: false,
+        westernToilet: false,
+        furnished: false,
+        carParking: false,
+        lift: false,
+        electricity: false,
         facing: "",
     })
 
+    const isAllInputsValied = propertyDetails.current.length.length && propertyDetails.current.breadth.length && propertyDetails.current.totalArea.length && propertyDetails.current.areaUnit.length && propertyDetails.current.noOfBHK.length && propertyDetails.current.noOfFloors.length
 
     // Navigating into next route, and passing data by useLocation state
     const handleSave = () => {
-        navigation('/general-info', { state: { propertyDetails, basicInfo } })
+        if (isAllInputsValied === 0) {
+            setIsValied(true)
+        }
+
+        else navigation('/general-info', { state: { propertyDetails, basicInfo } })
     }
 
     const handlePrevious = () => {
@@ -49,20 +60,20 @@ const PropertyDetails = () => {
 
                     {/* left-article-1 */}
                     <article>
-                        <div className='property-details-title'>Length</div>
-                        <input type="text" onChange={(e) => propertyDetails.current.length = e.target.value} placeholder='Example: 1000' />
+                        <div className='property-details-title'>Length<span className='required-field'>*</span></div>
+                        <input type="text" onChange={(e) => {setRequiredField({...requiredField,length:e.target.value}); propertyDetails.current.length = e.target.value}} placeholder='Example: 1000' />
                     </article>
 
                     {/* left-article-2 */}
                     <article>
-                        <div className='property-details-title'>Total Area</div>
-                        <input type="text" onChange={(e) => propertyDetails.current.totalArea = e.target.value} placeholder='Example: 1000' />
+                        <div className='property-details-title'>Total Area<span className='required-field'>*</span></div>
+                        <input type="text" onChange={(e) => {setRequiredField({...requiredField,totalArea:e.target.value}); propertyDetails.current.totalArea = e.target.value}} placeholder='Example: 1000' />
                     </article>
 
                     {/* left-article-3 */}
                     <article>
-                        <div className='property-details-title'>No of BHK</div>
-                        <select className='property-details-left-value' onChange={(e) => propertyDetails.current.noOfBHK = e.target.value} name="" id="select-bhk">
+                        <div className='property-details-title'>No of BHK<span className='required-field'>*</span></div>
+                        <select className='property-details-left-value' onChange={(e) => {setRequiredField({...requiredField,noOfBHK:e.target.value}); propertyDetails.current.noOfBHK = e.target.value}} name="" id="select-bhk">
                             <option value="">No of BHK</option>
                             <option value="1">1 BHK</option>
                             <option value="2">2 BHK</option>
@@ -74,9 +85,9 @@ const PropertyDetails = () => {
                     <article>
                         <div className='property-details-title'>Attached</div>
                         <select className='property-details-left-value' onChange={(e) => propertyDetails.current.attached = e.target.value} name="" id="select-attached">
-                            <option value="">Attached</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="false">Attached</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                     </article>
 
@@ -84,9 +95,9 @@ const PropertyDetails = () => {
                     <article>
                         <div className='property-details-title'>Furnished</div>
                         <select className='property-details-left-value' onChange={(e) => propertyDetails.current.furnished = e.target.value} name="" id="select-furnished">
-                            <option value="">Furnished</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="false">Furnished</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                     </article>
 
@@ -94,9 +105,9 @@ const PropertyDetails = () => {
                     <article>
                         <div className='property-details-title'>Lift</div>
                         <select className='property-details-left-value' onChange={(e) => propertyDetails.current.lift = e.target.value} name="" id="select-lift">
-                            <option value="">Lift</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="false">Lift</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                     </article>
 
@@ -104,7 +115,7 @@ const PropertyDetails = () => {
                     <article>
                         <div className='property-details-title'>Facing</div>
                         <select className='property-details-left-value' onChange={(e) => propertyDetails.current.facing = e.target.value} name="" id="select-facing">
-                            <option value="">Facing</option>
+                            <option value="NA">Facing</option>
                             <option value="north">North</option>
                             <option value="east">East</option>
                             <option value="south">South</option>
@@ -119,20 +130,20 @@ const PropertyDetails = () => {
 
                     {/* right-article-1 */}
                     <article>
-                        <div className='property-details-title'>Breadth</div>
-                        <input type="text" onChange={(e) => propertyDetails.current.breadth = e.target.value} placeholder='Example: 1000' />
+                        <div className='property-details-title'>Breadth<span className='required-field'>*</span></div>
+                        <input type="text" onChange={(e) => {setRequiredField({...requiredField,totalArea:e.target.value}); propertyDetails.current.breadth = e.target.value}} placeholder='Example: 1000' />
                     </article>
 
                     {/* right-article-2 */}
                     <article>
-                        <div className='property-details-title'>Area Unit</div>
-                        <input type="text" onChange={(e) => propertyDetails.current.areaUnit = e.target.value} placeholder='Example: 1000' />
+                        <div className='property-details-title'>Area Unit<span className='required-field'>*</span></div>
+                        <input type="text" onChange={(e) => {setRequiredField({...requiredField,totalArea:e.target.value}); propertyDetails.current.areaUnit = e.target.value}} placeholder='Example: m2' />
                     </article>
 
                     {/* right-article-3 */}
                     <article>
-                        <div className='property-details-title'>No of Floors</div>
-                        <select className='property-details-left-value' onChange={(e) => propertyDetails.current.noOfFloors = e.target.value} name="" id="select-floor">
+                        <div className='property-details-title'>No of Floors<span className='required-field'>*</span></div>
+                        <select className='property-details-left-value' onChange={(e) => {setRequiredField({...requiredField,noOfFloors:e.target.value}); propertyDetails.current.noOfFloors = e.target.value}} name="" id="select-floor">
                             <option value="">No of Floors</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -144,9 +155,9 @@ const PropertyDetails = () => {
                     <article>
                         <div className='property-details-title'>Western Toilet</div>
                         <select className='property-details-left-value' onChange={(e) => propertyDetails.current.westernToilet = e.target.value} name="" id="select-toilet">
-                            <option value="">Western Toilet</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="false">Western Toilet</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                     </article>
 
@@ -154,9 +165,9 @@ const PropertyDetails = () => {
                     <article>
                         <div className='property-details-title'>Car Parking</div>
                         <select className='property-details-left-value' onChange={(e) => propertyDetails.current.carParking = e.target.value} name="" id="select-carparking">
-                            <option value="">Car Parking</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="false">Car Parking</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                     </article>
 
@@ -164,9 +175,9 @@ const PropertyDetails = () => {
                     <article>
                         <div className='property-details-title'>Electricity</div>
                         <select className='property-details-left-value' onChange={(e) => propertyDetails.current.electricity = e.target.value} name="" id="select-electricity">
-                            <option value="">Electricity</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="false">Electricity</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                     </article>
 
@@ -175,6 +186,10 @@ const PropertyDetails = () => {
 
             {/* Property details button section */}
             <section className='property-details-btn'>
+
+                {/* Handle the error, if the mandotary field is empty */}
+                {isValied && <div style={{ color: "red"}}>Please fill the mandatory fields</div>}
+
                 <button className='property-details-previous-btn' onClick={handlePrevious}>Previous</button>
                 <button className='property-details-save-btn' onClick={handleSave}>Save & Continue</button>
             </section>

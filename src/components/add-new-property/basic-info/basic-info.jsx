@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './basic-info.css'
 
@@ -7,21 +7,40 @@ const BasicInfo = () => {
     // For navigating onClick
     const navigation = useNavigate()
 
+    // For checking the mandotary field errors
+    const [isValied, setIsValied] = useState(false)
+
+    // To get realtime update of mandatory field and show error according to this
+    const [requiredField, setRequiredField] = useState({propertyType:""})
+
     // Since we dont want realtime UI update, we are using useRef as performance optimization
     const basicInfo = useRef({
         propertyType: "",
-        negotiable: "",
-        price: "",
+        negotiable: false,
+        price: 0,
         ownership: "",
-        propertyAge: "",
-        propertyApproved: "",
+        propertyAge: 0,
+        propertyApproved: false,
         propertyDescription: "",
-        bankLoan: ""
+        bankLoan: false
     })
+
+    const isAllInputsValied = basicInfo.current.propertyType.length
+
 
     // Navigating into next route, and passing data by useLocation state
     const handleSave = () => {
-        navigation('/property-details', { state: { basicInfo: basicInfo } })
+
+        if(isAllInputsValied === 0){
+            setIsValied(true)
+        }
+
+        else navigation('/property-details', { state: { basicInfo: basicInfo } })
+        
+    }
+
+    const handleError=(e)=>{
+        setRequiredField({...requiredField, propertyType:e.target.value})
     }
 
     return (
@@ -34,8 +53,8 @@ const BasicInfo = () => {
 
                     {/* left-article-1 */}
                     <article>
-                        <div className='basic-info-title'>Property Type</div>
-                        <select className='basic-info-left-value' onChange={(e) => basicInfo.current.propertyType = e.target.value} name="" id="select-property">
+                        <div className='basic-info-title'>Property Type <span className='required-field'>*</span></div>
+                        <select className='basic-info-left-value' onChange={(e) => {handleError(e); basicInfo.current.propertyType = e.target.value}} name="" id="select-property">
                             <option value="">Select Property Type</option>
                             <option value="flat">Flat</option>
                             <option value="house">House</option>
@@ -53,7 +72,7 @@ const BasicInfo = () => {
                     <article>
                         <div className='basic-info-title'>Property Age</div>
                         <select className='basic-info-left-value' onChange={(e) => basicInfo.current.propertyAge = e.target.value} name="" id="select-property-age">
-                            <option value="">Select Property Age</option>
+                            <option value="0">Select Property Age</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -75,9 +94,9 @@ const BasicInfo = () => {
                     <article>
                         <div className='basic-info-title'>Negotiable</div>
                         <select className='basic-info-left-value' onChange={(e) => basicInfo.current.negotiable = e.target.value} name="" id="select-property-negotiable">
-                            <option value="">Select Negotiable</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="false">Select Negotiable</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                     </article>
 
@@ -85,7 +104,7 @@ const BasicInfo = () => {
                     <article>
                         <div className='basic-info-title'>Ownership</div>
                         <select className='basic-info-left-value' onChange={(e) => basicInfo.current.ownership = e.target.value} name="" id="select-property-ownership">
-                            <option value="">Select Ownership</option>
+                            <option value="null">Select Ownership</option>
                             <option value="owned">Owned</option>
                             <option value="lease">Lease</option>
                         </select>
@@ -95,9 +114,9 @@ const BasicInfo = () => {
                     <article>
                         <div className='basic-info-title'>Property Approved</div>
                         <select className='basic-info-left-value' onChange={(e) => basicInfo.current.propertyApproved = e.target.value} name="" id="property-approved">
-                            <option value="">Property Approved</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="false">Property Approved</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                     </article>
 
@@ -105,9 +124,9 @@ const BasicInfo = () => {
                     <article>
                         <div className='basic-info-title'>Bank Loan</div>
                         <select className='basic-info-left-value' onChange={(e) => basicInfo.current.bankLoan = e.target.value} name="" id="bank-loan">
-                            <option value="">Bank Loan</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="false">Bank Loan</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                     </article>
 
@@ -116,6 +135,10 @@ const BasicInfo = () => {
 
             {/* Basic info button section */}
             <section className='basic-info-btn'>
+
+                {/* Handle the error, if the mandotary field is empty */}
+                {isValied && <div style={{ color: "red" }}>Please fill the mandatory fields</div>}
+
                 <button className='basic-info-cancel-btn'>Cancel</button>
                 <button className='basic-info-save-btn' onClick={handleSave}>Save & Continue</button>
             </section>

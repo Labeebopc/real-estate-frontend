@@ -100,3 +100,7 @@
     width: 140px;
     cursor: pointer;
 }
+
+.required-field{
+    color: rgb(236, 12, 12);
+}

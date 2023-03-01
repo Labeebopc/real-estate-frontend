@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import './general-info.css'
 
@@ -10,23 +10,35 @@ const GeneralInfo = () => {
     const basicInfo = location.state.basicInfo
     const propertyDetails = location.state.propertyDetails
 
+    // For checking the mandotary field errors
+    const [isValied, setIsValied] = useState(false)
+
     // For navigating onClick
     const navigation = useNavigate()
+
+    // To get realtime update of mandatory field and show error according to this
+    const [requiredField, setRequiredField] = useState({name:"", mobile:""})
 
     // Since we dont want realtime UI update, we are using useRef as performance optimization
     const generalInfo = useRef({
         name: "",
-        mobile: "",
+        mobile: 0,
         postedBy: "",
         saleType: "",
-        featuredPackage: "",
+        featuredPackage: false,
         ppdPackage: "",
         image: null,
     })
 
+    const isAllInputsValied = generalInfo.current.name.length && generalInfo.current.mobile.length 
+
     // Navigating into next route, and passing data by useLocation state
     const handleSave = () => {
-        navigation('/location-info', { state: { generalInfo, basicInfo, propertyDetails } })
+
+        if(isAllInputsValied === 0){
+            setIsValied(true)
+        }
+        else navigation('/location-info', { state: { generalInfo, basicInfo, propertyDetails } })
     }
 
     const handlePrevious = () => {
@@ -43,8 +55,8 @@ const GeneralInfo = () => {
 
                     {/* left-article-1 */}
                     <article>
-                        <div className='general-info-title'>Name</div>
-                        <select className='general-info-left-value' onChange={(e) => generalInfo.current.name = e.target.value} name="" id="select-name">
+                        <div className='general-info-title'>Name<span className='required-field'>*</span></div>
+                        <select className='general-info-left-value' onChange={(e) => {setRequiredField({...requiredField, name:e.target.name}); generalInfo.current.name = e.target.value}} name="" id="select-name">
                             <option value="">Name</option>
                             <option value="owner">Owner</option>
                             <option value="broker">Broker</option>
@@ -65,9 +77,9 @@ const GeneralInfo = () => {
                     <article>
                         <div className='general-info-title'>Featured Package</div>
                         <select className='general-info-left-value' onChange={(e) => generalInfo.current.featuredPackage = e.target.value} name="" id="select-package">
-                            <option value="">Featured Package</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="false">Featured Package</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                     </article>
 
@@ -78,8 +90,8 @@ const GeneralInfo = () => {
 
                     {/* right-article-1 */}
                     <article>
-                        <div className='general-info-title'>Mobile</div>
-                        <input type="text" onChange={(e) => generalInfo.current.mobile = e.target.value} placeholder='Enter Mobile Number' />
+                        <div className='general-info-title'>Mobile<span className='required-field'>*</span></div>
+                        <input type="text" onChange={(e) => { setRequiredField({...requiredField, mobile:e.target.value});generalInfo.current.mobile = e.target.value}} placeholder='Enter Mobile Number' />
                     </article>
 
                     {/* right-article-2 */}
@@ -107,6 +119,10 @@ const GeneralInfo = () => {
 
             {/* General info button section */}
             <section className='general-info-btn'>
+
+                {/* Handle the error, if the mandotary field is empty */}
+                {isValied && <div style={{ color: "red" }}>Please fill the mandatory fields</div>}
+
                 <button className='general-info-previous-btn' onClick={handlePrevious}>Previous</button>
                 <button className='general-info-save-btn' onClick={handleSave}>Save & Continue</button>
             </section>

@@ -1,11 +1,18 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import axios from 'axios'
 import './location-info.css'
 
 
 const LocationInfo = () => {
     // For navigating onClick
     const navigation = useNavigate()
+
+    // For checking the mandotary field errors
+    const [isValied, setIsValied] = useState(false)
+
+    // To get realtime update of mandatory field and show error according to this
+    const [requiredField, setRequiredField] = useState({ email: "", area: "" })
 
     // Getting the passed details from previous page & storing in one variable
     const location = useLocation()
@@ -18,30 +25,49 @@ const LocationInfo = () => {
         email: "",
         city: "",
         area: "",
-        pincode: "",
+        pincode: 0,
         address: "",
         landmark: "",
-        latitude: "",
-        longitude: "",
+        latitude: 0,
+        longitude: 0,
     })
 
     // const allDetails = Object.assign(
     //     locationInfo
     // );
 
+    const isAllInputsValied = locationInfo.current.email.length && locationInfo.current.area.length
+
     const handleSubmit = () => {
 
-        let allPropertyData = [basicInfo, propertyDetails, generalInfo, locationInfo]
+        if (isAllInputsValied === 0) {
+            setIsValied(true)
+        }
 
-        //alert("New Property Successfully Added")
-        console.log(allPropertyData);
-        navigation('/')
+        else {
+
+            let allPropertyData = [basicInfo, propertyDetails, generalInfo, locationInfo]
+
+            //alert("New Property Successfully Added")
+            //console.log(allPropertyData);
+
+            const sendAllData = async () => {
+                console.log(allPropertyData);
+                let response = await axios.post('http://localhost:8080/api/v1/addnewproperty', {
+                    data: allPropertyData
+                }).then((res) => console.log(res))
+            }
+            sendAllData()
+
+            navigation('/')
+        }
 
     }
 
     const handlePrevious = () => {
         navigation('/general-info', { state: { generalInfo } })
     }
+
 
     return (
         <>
@@ -53,15 +79,15 @@ const LocationInfo = () => {
 
                     {/* left-article-1 */}
                     <article>
-                        <div className='location-info-title'>Email</div>
-                        <input type="text" onChange={(e) => locationInfo.current.email = e.target.value} placeholder='Enter Your Email' />
+                        <div className='location-info-title'>Email<span className='required-field'>*</span></div>
+                        <input type="text" onChange={(e) => { setRequiredField({ ...requiredField, email: e.target.value }); locationInfo.current.email = e.target.value }} placeholder='Enter Your Email' />
                     </article>
 
                     {/* left-article-2 */}
                     <article>
-                        <div className='location-info-title'>Select Area</div>
-                        <select className='location-info-left-value' onChange={(e) => locationInfo.current.area = e.target.value} name="" id="select-area">
-                            <option value="">Area</option>
+                        <div className='location-info-title'>Select Area<span className='required-field'>*</span></div>
+                        <select className='location-info-left-value' onChange={(e) => { setRequiredField({ ...requiredField, area: e.target.value }); locationInfo.current.area = e.target.value }} name="" id="select-area">
+                            <option value="0">Area</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                         </select>
@@ -76,7 +102,7 @@ const LocationInfo = () => {
                     {/* left-article-4 */}
                     <article>
                         <div className='location-info-title'>Latitude</div>
-                        <input type="text" onChange={(e) => locationInfo.current.latitude = e.target.value} placeholder='Latitude' />
+                        <input type="text" onChange={(e) => locationInfo.current.latitude = e.target.value} placeholder='Latitude Eg: 10000' />
                     </article>
 
                 </section>
@@ -88,7 +114,7 @@ const LocationInfo = () => {
                     <article>
                         <div className='location-info-title'>City</div>
                         <select className='location-info-left-value' onChange={(e) => locationInfo.current.city = e.target.value} name="" id="select-city">
-                            <option value="">Select City</option>
+                            <option value="NA">Select City</option>
                             <option value="hyderabad">Hyderabad</option>
                             <option value="malappuram">Malappuram</option>
                         </select>
@@ -98,7 +124,7 @@ const LocationInfo = () => {
                     <article>
                         <div className='location-info-title'>Pincode</div>
                         <select className='location-info-left-value' onChange={(e) => locationInfo.current.pincode = e.target.value} name="" id="select-pincode">
-                            <option value=""> Select Pincode</option>
+                            <option value="0"> Select Pincode</option>
                             <option value="580051">580051</option>
                             <option value="676555">676555</option>
                         </select>
@@ -113,7 +139,7 @@ const LocationInfo = () => {
                     {/* right-article-4 */}
                     <article>
                         <div className='location-info-title'>Longitude</div>
-                        <input type="text" onChange={(e) => locationInfo.current.longitude = e.target.value} placeholder='Longitude' />
+                        <input type="text" onChange={(e) => locationInfo.current.longitude = e.target.value} placeholder='Longitude Example: 10000' />
                     </article>
 
                 </section>
@@ -121,6 +147,10 @@ const LocationInfo = () => {
 
             {/* Location info button section */}
             <section className='location-info-btn'>
+
+                {/* Handle the error, if the mandotary field is empty */}
+                {isValied && <div style={{ color: "red" }}>Please fill the mandatory fields</div>}
+
                 <button className='location-info-previous-btn' onClick={handlePrevious}>Previous</button>
                 <button className='location-info-save-btn' onClick={handleSubmit}>Save & Continue</button>
             </section>
