@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Header from '../header/header'
 import './basic-info.css'
 
 
@@ -45,6 +46,7 @@ const BasicInfo = () => {
 
     return (
         <>
+        <Header/>
             {/* Basic info Container */}
             <section className='basic-info-container'>
 
