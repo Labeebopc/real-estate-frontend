@@ -4,7 +4,7 @@ import Sidebar from "./sidebar";
 import { useNavigate } from "react-router-dom";
 import "../styles/propertyDetails.css"
 import { Navigate } from "react-router-dom";
-const PropertyDetails = () =>{
+const DisplayDetails = () =>{
     const navigate = useNavigate()
     const handleLogout = () => {
         let item = window.localStorage.getItem("token");
@@ -22,4 +22,4 @@ const PropertyDetails = () =>{
         </>
     )
 }
-export default PropertyDetails;
+export default DisplayDetails;
