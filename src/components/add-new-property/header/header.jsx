@@ -20,7 +20,7 @@ const Header = () => {
                 <section className='tab-headings'>
 
                     {/* Heading-1 */}
-                    <article className={tab === "/" ? "tab-heading-selected" : "tab-heading"}>
+                    <article className={tab === "/basic-info" ? "tab-heading-selected" : "tab-heading"}>
                         <span>1</span>
                         <span>Basic Info</span>
                     </article>
