@@ -4,7 +4,6 @@ import Signup from "./components/signUp";
 import React from 'react'
 import './App.css';
 import DisplayDetails from "./components/displayDetails";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BasicInfo from './components/add-new-property/basic-info/basic-info';
 import PropertyDetails from './components/add-new-property/property-details/property-details';
 import GeneralInfo from './components/add-new-property/general-info/general-info';
@@ -12,7 +11,7 @@ import LocationInfo from './components/add-new-property/location-info/location-i
 import Header from './components/add-new-property/header/header'
 
 // import Addproperty from "./components/addProperty";
-import PropertyDetails from "./components/displayDetails";
+
 function App() {
   return (
     <BrowserRouter>
