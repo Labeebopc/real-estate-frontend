@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import Header from '../header/header'
 import './general-info.css'
+import FileBase64 from 'react-file-base64';
 
 
 const GeneralInfo = () => {
@@ -18,7 +19,7 @@ const GeneralInfo = () => {
     const navigation = useNavigate()
 
     // To get realtime update of mandatory field and show error according to this
-    const [requiredField, setRequiredField] = useState({name:"", mobile:""})
+    const [requiredField, setRequiredField] = useState({ name: "", mobile: "" })
 
     // Since we dont want realtime UI update, we are using useRef as performance optimization
     const generalInfo = useRef({
@@ -28,15 +29,15 @@ const GeneralInfo = () => {
         saleType: "",
         featuredPackage: false,
         ppdPackage: "",
-        image: null,
+        image: "",
     })
 
-    const isAllInputsValied = generalInfo.current.name.length && generalInfo.current.mobile.length 
+    const isAllInputsValied = generalInfo.current.name.length && generalInfo.current.mobile.length
 
     // Navigating into next route, and passing data by useLocation state
     const handleSave = () => {
 
-        if(isAllInputsValied === 0){
+        if (isAllInputsValied === 0) {
             setIsValied(true)
         }
         else navigation('/location-info', { state: { generalInfo, basicInfo, propertyDetails } })
@@ -48,7 +49,7 @@ const GeneralInfo = () => {
 
     return (
         <>
-        <Header/>
+            <Header />
             {/* General info Container */}
             <section className='general-info-container'>
 
@@ -58,7 +59,7 @@ const GeneralInfo = () => {
                     {/* left-article-1 */}
                     <article>
                         <div className='general-info-title'>Name<span className='required-field'>*</span></div>
-                        <select className='general-info-left-value' onChange={(e) => {setRequiredField({...requiredField, name:e.target.name}); generalInfo.current.name = e.target.value}} name="" id="select-name">
+                        <select className='general-info-left-value' onChange={(e) => { setRequiredField({ ...requiredField, name: e.target.name }); generalInfo.current.name = e.target.value }} name="" id="select-name">
                             <option value="">Name</option>
                             <option value="owner">Owner</option>
                             <option value="broker">Broker</option>
@@ -85,6 +86,15 @@ const GeneralInfo = () => {
                         </select>
                     </article>
 
+                    {/* left-article-4 */}
+                    <article id='general-info-image-article' >
+                        {/* <input id='general-info-input' type="file" onChange={(e) => {generalInfo.current.image = e.target.value; console.log(e.target.value.split("\\")[e.target.value.split("\\").length-1])}} /> */}
+                        <FileBase64 id='general-info-input'
+                            multiple={false}
+                            onDone={(base64) => { generalInfo.current.image = base64.base64; }} />
+                        <span className='general-info-title'>Add Photo</span>
+                    </article>
+
                 </section>
 
                 {/* General info right section */}
@@ -93,7 +103,7 @@ const GeneralInfo = () => {
                     {/* right-article-1 */}
                     <article>
                         <div className='general-info-title'>Mobile<span className='required-field'>*</span></div>
-                        <input type="text" onChange={(e) => { setRequiredField({...requiredField, mobile:e.target.value});generalInfo.current.mobile = e.target.value}} placeholder='Enter Mobile Number' />
+                        <input type="text" onChange={(e) => { setRequiredField({ ...requiredField, mobile: e.target.value }); generalInfo.current.mobile = e.target.value }} placeholder='Enter Mobile Number' />
                     </article>
 
                     {/* right-article-2 */}
