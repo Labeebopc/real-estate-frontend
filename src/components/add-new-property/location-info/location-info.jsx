@@ -60,7 +60,7 @@ const LocationInfo = () => {
             }
             sendAllData()
 
-            navigation('/')
+            navigation('/propertyDetails')
         }
 
     }

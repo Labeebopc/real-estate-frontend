@@ -8,7 +8,7 @@ import BasicInfo from './components/add-new-property/basic-info/basic-info';
 import PropertyDetails from './components/add-new-property/property-details/property-details';
 import GeneralInfo from './components/add-new-property/general-info/general-info';
 import LocationInfo from './components/add-new-property/location-info/location-info';
-import Header from './components/add-new-property/header/header'
+//import Header from './components/add-new-property/header/header'
 
 // import Addproperty from "./components/addProperty";
 
