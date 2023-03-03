@@ -27,7 +27,7 @@
 
 .general-info-right {
     box-sizing: border-box;
-    margin: auto;
+    /* margin: auto; */
     /* display: flex;
     flex-direction: column; */
     /* width: 95%; */
@@ -67,8 +67,8 @@
     border-radius: 8px;
     padding: 5px;
     width: 95%;
-     height: 40px;
-     border: 1px solid #C3C3C3;
+    height: 40px;
+    border: 1px solid #C3C3C3;
 }
 
 .general-info-btn {
@@ -78,7 +78,7 @@
     padding: 10px;
 }
 
-.general-info-previous-btn{
+.general-info-previous-btn {
     background: #6AB4F8;
     box-shadow: 0px 13px 25px rgba(0, 0, 0, 0.15);
     border-radius: 50px;
@@ -89,7 +89,7 @@
     cursor: pointer;
 }
 
-.general-info-save-btn{
+.general-info-save-btn {
     background: #4C57B6;
     box-shadow: 0px 13px 25px rgba(0, 0, 0, 0.15);
     border-radius: 50px;
@@ -101,6 +101,27 @@
     cursor: pointer;
 }
 
-.required-field{
+.required-field {
     color: rgb(236, 12, 12);
+}
+
+/* #general-info-input {
+    width: 50px;
+    background-color: #6AB4F8;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+    height: 50px;
+    border-radius: 80px;
+} */
+
+#general-info-image-article {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+#general-info-image-article input {
+    width: 50px;
+    background-color: #6AB4F8;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+    height: 50px;
+    border-radius: 80px;
 }
