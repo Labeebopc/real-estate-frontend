@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import Header from '../header/header'
 import './property-details.css'
 
 
@@ -52,6 +53,7 @@ const PropertyDetails = () => {
 
     return (
         <>
+        <Header/>
             {/* Property Details Container */}
             <section className='property-details-container'>
 

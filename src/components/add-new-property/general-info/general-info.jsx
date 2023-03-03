@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import Header from '../header/header'
 import './general-info.css'
 
 
@@ -47,6 +48,7 @@ const GeneralInfo = () => {
 
     return (
         <>
+        <Header/>
             {/* General info Container */}
             <section className='general-info-container'>
 

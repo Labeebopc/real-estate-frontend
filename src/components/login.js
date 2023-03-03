@@ -58,6 +58,7 @@ const Login = () =>{
     }
     const checkErrors = (type) => {
         switch(type){
+
             case "email":
                 console.log(email)
                 var regex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -75,6 +76,8 @@ const Login = () =>{
                     errorMess({...error, password:{isValid: true,message: ""}})
                 }
                 break;
+
+                default: return error
         }
     }
     return (

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import './location-info.css'
+import Header from '../header/header'
 
 
 const LocationInfo = () => {
@@ -71,6 +72,7 @@ const LocationInfo = () => {
 
     return (
         <>
+        <Header/>
             {/* Location info Container */}
             <section className='location-info-container'>
 
