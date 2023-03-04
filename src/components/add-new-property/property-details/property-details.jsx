@@ -63,19 +63,19 @@ const PropertyDetails = () => {
                     {/* left-article-1 */}
                     <article>
                         <div className='property-details-title'>Length<span className='required-field'>*</span></div>
-                        <input type="text" onChange={(e) => {setRequiredField({...requiredField,length:e.target.value}); propertyDetails.current.length = e.target.value}} placeholder='Example: 1000' />
+                        <input className='property-details-values' type="text" onChange={(e) => {setRequiredField({...requiredField,length:e.target.value}); propertyDetails.current.length = e.target.value}} placeholder='Example: 1000' />
                     </article>
 
                     {/* left-article-2 */}
                     <article>
                         <div className='property-details-title'>Total Area<span className='required-field'>*</span></div>
-                        <input type="text" onChange={(e) => {setRequiredField({...requiredField,totalArea:e.target.value}); propertyDetails.current.totalArea = e.target.value}} placeholder='Example: 1000' />
+                        <input className='property-details-values' type="text" onChange={(e) => {setRequiredField({...requiredField,totalArea:e.target.value}); propertyDetails.current.totalArea = e.target.value}} placeholder='Example: 1000' />
                     </article>
 
                     {/* left-article-3 */}
                     <article>
                         <div className='property-details-title'>No of BHK<span className='required-field'>*</span></div>
-                        <select className='property-details-left-value' onChange={(e) => {setRequiredField({...requiredField,noOfBHK:e.target.value}); propertyDetails.current.noOfBHK = e.target.value}} name="" id="select-bhk">
+                        <select className='property-details-values' onChange={(e) => {setRequiredField({...requiredField,noOfBHK:e.target.value}); propertyDetails.current.noOfBHK = e.target.value}} name="" id="select-bhk">
                             <option value="">No of BHK</option>
                             <option value="1">1 BHK</option>
                             <option value="2">2 BHK</option>
@@ -86,7 +86,7 @@ const PropertyDetails = () => {
                     {/* left-article-4 */}
                     <article>
                         <div className='property-details-title'>Attached</div>
-                        <select className='property-details-left-value' onChange={(e) => propertyDetails.current.attached = e.target.value} name="" id="select-attached">
+                        <select className='property-details-values' onChange={(e) => propertyDetails.current.attached = e.target.value} name="" id="select-attached">
                             <option value="false">Attached</option>
                             <option value="true">Yes</option>
                             <option value="false">No</option>
@@ -96,7 +96,7 @@ const PropertyDetails = () => {
                     {/* left-article-5 */}
                     <article>
                         <div className='property-details-title'>Furnished</div>
-                        <select className='property-details-left-value' onChange={(e) => propertyDetails.current.furnished = e.target.value} name="" id="select-furnished">
+                        <select className='property-details-values' onChange={(e) => propertyDetails.current.furnished = e.target.value} name="" id="select-furnished">
                             <option value="false">Furnished</option>
                             <option value="true">Yes</option>
                             <option value="false">No</option>
@@ -106,7 +106,7 @@ const PropertyDetails = () => {
                     {/* left-article-6 */}
                     <article>
                         <div className='property-details-title'>Lift</div>
-                        <select className='property-details-left-value' onChange={(e) => propertyDetails.current.lift = e.target.value} name="" id="select-lift">
+                        <select className='property-details-values' onChange={(e) => propertyDetails.current.lift = e.target.value} name="" id="select-lift">
                             <option value="false">Lift</option>
                             <option value="true">Yes</option>
                             <option value="false">No</option>
@@ -116,7 +116,7 @@ const PropertyDetails = () => {
                     {/* left-article-7 */}
                     <article>
                         <div className='property-details-title'>Facing</div>
-                        <select className='property-details-left-value' onChange={(e) => propertyDetails.current.facing = e.target.value} name="" id="select-facing">
+                        <select className='property-details-values' onChange={(e) => propertyDetails.current.facing = e.target.value} name="" id="select-facing">
                             <option value="NA">Facing</option>
                             <option value="north">North</option>
                             <option value="east">East</option>
@@ -133,19 +133,19 @@ const PropertyDetails = () => {
                     {/* right-article-1 */}
                     <article>
                         <div className='property-details-title'>Breadth<span className='required-field'>*</span></div>
-                        <input type="text" onChange={(e) => {setRequiredField({...requiredField,totalArea:e.target.value}); propertyDetails.current.breadth = e.target.value}} placeholder='Example: 1000' />
+                        <input className='property-details-values' type="text" onChange={(e) => {setRequiredField({...requiredField,totalArea:e.target.value}); propertyDetails.current.breadth = e.target.value}} placeholder='Example: 1000' />
                     </article>
 
                     {/* right-article-2 */}
                     <article>
                         <div className='property-details-title'>Area Unit<span className='required-field'>*</span></div>
-                        <input type="text" onChange={(e) => {setRequiredField({...requiredField,totalArea:e.target.value}); propertyDetails.current.areaUnit = e.target.value}} placeholder='Example: m2' />
+                        <input className='property-details-values' type="text" onChange={(e) => {setRequiredField({...requiredField,totalArea:e.target.value}); propertyDetails.current.areaUnit = e.target.value}} placeholder='Example: m2' />
                     </article>
 
                     {/* right-article-3 */}
                     <article>
                         <div className='property-details-title'>No of Floors<span className='required-field'>*</span></div>
-                        <select className='property-details-left-value' onChange={(e) => {setRequiredField({...requiredField,noOfFloors:e.target.value}); propertyDetails.current.noOfFloors = e.target.value}} name="" id="select-floor">
+                        <select className='property-details-values' onChange={(e) => {setRequiredField({...requiredField,noOfFloors:e.target.value}); propertyDetails.current.noOfFloors = e.target.value}} name="" id="select-floor">
                             <option value="">No of Floors</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -156,7 +156,7 @@ const PropertyDetails = () => {
                     {/* right-article-4 */}
                     <article>
                         <div className='property-details-title'>Western Toilet</div>
-                        <select className='property-details-left-value' onChange={(e) => propertyDetails.current.westernToilet = e.target.value} name="" id="select-toilet">
+                        <select className='property-details-values' onChange={(e) => propertyDetails.current.westernToilet = e.target.value} name="" id="select-toilet">
                             <option value="false">Western Toilet</option>
                             <option value="true">Yes</option>
                             <option value="false">No</option>
@@ -166,7 +166,7 @@ const PropertyDetails = () => {
                     {/* right-article-5 */}
                     <article>
                         <div className='property-details-title'>Car Parking</div>
-                        <select className='property-details-left-value' onChange={(e) => propertyDetails.current.carParking = e.target.value} name="" id="select-carparking">
+                        <select className='property-details-values' onChange={(e) => propertyDetails.current.carParking = e.target.value} name="" id="select-carparking">
                             <option value="false">Car Parking</option>
                             <option value="true">Yes</option>
                             <option value="false">No</option>
@@ -176,7 +176,7 @@ const PropertyDetails = () => {
                     {/* right-article-6 */}
                     <article>
                         <div className='property-details-title'>Electricity</div>
-                        <select className='property-details-left-value' onChange={(e) => propertyDetails.current.electricity = e.target.value} name="" id="select-electricity">
+                        <select className='property-details-values' onChange={(e) => propertyDetails.current.electricity = e.target.value} name="" id="select-electricity">
                             <option value="false">Electricity</option>
                             <option value="true">Yes</option>
                             <option value="false">No</option>
