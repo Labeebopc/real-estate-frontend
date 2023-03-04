@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios"
 import Sidebar from "./sidebar";
 import { useNavigate } from "react-router-dom";
-import "../styles/propertyDetails.css"
+import "../styles/displayDetails.css"
 
 
 const DisplayDetails = () => {
@@ -12,18 +12,19 @@ const DisplayDetails = () => {
         localStorage.removeItem(item)
         navigate("/", { replace: true })
     }
-// bacis-info => basictInfo
-//
-//
+    // bacis-info => basictInfo
+    //
+    //
     return (
         <>
             {/* <Sidebar/> */}
-            <div id="box">
-                <button onClick={handleLogout}>Logout</button>
-            </div>
+
 
             <section className="display-details-navbar">
-
+                <div id="box">
+                    <button onClick={handleLogout}>Logout</button>
+                </div>
+                <button onClick={() => navigate('/basic-info')}>Add New Property</button>
             </section>
 
             <section className="display-details-table">

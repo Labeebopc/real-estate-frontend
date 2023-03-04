@@ -59,7 +59,7 @@ const GeneralInfo = () => {
                     {/* left-article-1 */}
                     <article>
                         <div className='general-info-title'>Name<span className='required-field'>*</span></div>
-                        <select className='general-info-left-value' onChange={(e) => { setRequiredField({ ...requiredField, name: e.target.name }); generalInfo.current.name = e.target.value }} name="" id="select-name">
+                        <select className='general-info-values' onChange={(e) => { setRequiredField({ ...requiredField, name: e.target.name }); generalInfo.current.name = e.target.value }} name="" id="select-name">
                             <option value="">Name</option>
                             <option value="owner">Owner</option>
                             <option value="broker">Broker</option>
@@ -69,7 +69,7 @@ const GeneralInfo = () => {
                     {/* left-article-2 */}
                     <article>
                         <div className='general-info-title'>Posted By</div>
-                        <select className='general-info-left-value' onChange={(e) => generalInfo.current.postedBy = e.target.value} name="" id="select-posted">
+                        <select className='general-info-values' onChange={(e) => generalInfo.current.postedBy = e.target.value} name="" id="select-posted">
                             <option value="">Posted By</option>
                             <option value="owner">Owner</option>
                             <option value="broker">Broker</option>
@@ -79,7 +79,7 @@ const GeneralInfo = () => {
                     {/* left-article-3 */}
                     <article>
                         <div className='general-info-title'>Featured Package</div>
-                        <select className='general-info-left-value' onChange={(e) => generalInfo.current.featuredPackage = e.target.value} name="" id="select-package">
+                        <select className='general-info-values' onChange={(e) => generalInfo.current.featuredPackage = e.target.value} name="" id="select-package">
                             <option value="false">Featured Package</option>
                             <option value="true">Yes</option>
                             <option value="false">No</option>
@@ -89,9 +89,9 @@ const GeneralInfo = () => {
                     {/* left-article-4 */}
                     <article id='general-info-image-article' >
                         {/* <input id='general-info-input' type="file" onChange={(e) => {generalInfo.current.image = e.target.value; console.log(e.target.value.split("\\")[e.target.value.split("\\").length-1])}} /> */}
-                        <FileBase64 id='general-info-input'
+                        {/* <FileBase64 id='general-info-input'
                             multiple={false}
-                            onDone={(base64) => { generalInfo.current.image = base64.base64; }} />
+                            onDone={(base64) => { generalInfo.current.image = base64.base64; }} /> */}
                         <span className='general-info-title'>Add Photo</span>
                     </article>
 
@@ -103,13 +103,13 @@ const GeneralInfo = () => {
                     {/* right-article-1 */}
                     <article>
                         <div className='general-info-title'>Mobile<span className='required-field'>*</span></div>
-                        <input type="text" onChange={(e) => { setRequiredField({ ...requiredField, mobile: e.target.value }); generalInfo.current.mobile = e.target.value }} placeholder='Enter Mobile Number' />
+                        <input className='general-info-values' type="text" onChange={(e) => { setRequiredField({ ...requiredField, mobile: e.target.value }); generalInfo.current.mobile = e.target.value }} placeholder='Enter Mobile Number' />
                     </article>
 
                     {/* right-article-2 */}
                     <article>
                         <div className='general-info-title'>Sale Type</div>
-                        <select className='general-info-left-value' onChange={(e) => generalInfo.current.saleType = e.target.value} name="" id="select-saletype">
+                        <select className='general-info-values' onChange={(e) => generalInfo.current.saleType = e.target.value} name="" id="select-saletype">
                             <option value="">Sale Type</option>
                             <option value="rent">Rent</option>
                             <option value="ownership">Ownership</option>
@@ -119,7 +119,7 @@ const GeneralInfo = () => {
                     {/* right-article-3 */}
                     <article>
                         <div className='general-info-title'>PPD Package</div>
-                        <select className='general-info-left-value' onChange={(e) => generalInfo.current.ppdPackage = e.target.value} name="" id="select-ppd">
+                        <select className='general-info-values' onChange={(e) => generalInfo.current.ppdPackage = e.target.value} name="" id="select-ppd">
                             <option value="">PPD Package</option>
                             <option value="">....</option>
                             <option value="">....</option>

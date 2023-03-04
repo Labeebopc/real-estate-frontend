@@ -82,13 +82,13 @@ const LocationInfo = () => {
                     {/* left-article-1 */}
                     <article>
                         <div className='location-info-title'>Email<span className='required-field'>*</span></div>
-                        <input type="text" onChange={(e) => { setRequiredField({ ...requiredField, email: e.target.value }); locationInfo.current.email = e.target.value }} placeholder='Enter Your Email' />
+                        <input className='location-info-values' type="text" onChange={(e) => { setRequiredField({ ...requiredField, email: e.target.value }); locationInfo.current.email = e.target.value }} placeholder='Enter Your Email' />
                     </article>
 
                     {/* left-article-2 */}
                     <article>
                         <div className='location-info-title'>Select Area<span className='required-field'>*</span></div>
-                        <select className='location-info-left-value' onChange={(e) => { setRequiredField({ ...requiredField, area: e.target.value }); locationInfo.current.area = e.target.value }} name="" id="select-area">
+                        <select className='location-info-values' onChange={(e) => { setRequiredField({ ...requiredField, area: e.target.value }); locationInfo.current.area = e.target.value }} name="" id="select-area">
                             <option value="0">Area</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -98,13 +98,13 @@ const LocationInfo = () => {
                     {/* left-article-3 */}
                     <article>
                         <div className='location-info-title'>Address</div>
-                        <input type="text" onChange={(e) => locationInfo.current.address = e.target.value} placeholder='Address' />
+                        <input className='location-info-values' type="text" onChange={(e) => locationInfo.current.address = e.target.value} placeholder='Address' />
                     </article>
 
                     {/* left-article-4 */}
                     <article>
                         <div className='location-info-title'>Latitude</div>
-                        <input type="text" onChange={(e) => locationInfo.current.latitude = e.target.value} placeholder='Latitude Eg: 10000' />
+                        <input className='location-info-values' type="text" onChange={(e) => locationInfo.current.latitude = e.target.value} placeholder='Latitude Eg: 10000' />
                     </article>
 
                 </section>
@@ -115,7 +115,7 @@ const LocationInfo = () => {
                     {/* right-article-1 */}
                     <article>
                         <div className='location-info-title'>City</div>
-                        <select className='location-info-left-value' onChange={(e) => locationInfo.current.city = e.target.value} name="" id="select-city">
+                        <select className='location-info-values' onChange={(e) => locationInfo.current.city = e.target.value} name="" id="select-city">
                             <option value="NA">Select City</option>
                             <option value="hyderabad">Hyderabad</option>
                             <option value="malappuram">Malappuram</option>
@@ -125,7 +125,7 @@ const LocationInfo = () => {
                     {/* right-article-2 */}
                     <article>
                         <div className='location-info-title'>Pincode</div>
-                        <select className='location-info-left-value' onChange={(e) => locationInfo.current.pincode = e.target.value} name="" id="select-pincode">
+                        <select className='location-info-values' onChange={(e) => locationInfo.current.pincode = e.target.value} name="" id="select-pincode">
                             <option value="0"> Select Pincode</option>
                             <option value="580051">580051</option>
                             <option value="676555">676555</option>
@@ -135,13 +135,13 @@ const LocationInfo = () => {
                     {/* right-article-3 */}
                     <article>
                         <div className='location-info-title'>Landmark</div>
-                        <input type="text" onChange={(e) => locationInfo.current.landmark = e.target.value} placeholder='Landmark' />
+                        <input className='location-info-values' type="text" onChange={(e) => locationInfo.current.landmark = e.target.value} placeholder='Landmark' />
                     </article>
 
                     {/* right-article-4 */}
                     <article>
                         <div className='location-info-title'>Longitude</div>
-                        <input type="text" onChange={(e) => locationInfo.current.longitude = e.target.value} placeholder='Longitude Example: 10000' />
+                        <input className='location-info-values' type="text" onChange={(e) => locationInfo.current.longitude = e.target.value} placeholder='Longitude Example: 10000' />
                     </article>
 
                 </section>

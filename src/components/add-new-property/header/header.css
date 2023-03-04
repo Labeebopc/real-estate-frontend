@@ -1,7 +1,7 @@
 .header-container{
     background-color: #F5F5F5;
     margin-bottom: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 .header-container h4{
@@ -33,6 +33,7 @@
     gap: 10px;
     padding: 10px;
     color: white;
+    
 }
 
 .tab-headings .tab-heading-selected :first-child{
@@ -43,6 +44,8 @@
     height: 20px;
     text-align: center;
     color: black;
+    display: flex;
+    align-items: center;
 }
 
 .tab-headings .tab-heading-selected :last-child{
@@ -71,6 +74,8 @@
     height: 20px;
     text-align: center;
     color: black;
+    display: flex;
+    align-items: center;
 }
 
 .tab-headings .tab-heading :last-child{

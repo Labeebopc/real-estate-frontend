@@ -45,30 +45,17 @@
     color: #7D7D7D;
 }
 
-.location-info-container input {
+.location-info-values {
     left: 26.31%;
     right: 41.19%;
     top: 40.56%;
     bottom: 53.89%;
     border-radius: 8px;
-    padding: 5px;
-    width: 92%;
-    height: 27px;
+    padding: 10px;
+    width: 95%;
+    height: 42px;
     border: 1px solid #C3C3C3;
 
-}
-
-
-.location-info-container select {
-    left: 26.31%;
-    right: 41.19%;
-    top: 40.56%;
-    bottom: 53.89%;
-    border-radius: 8px;
-    padding: 5px;
-    width: 95%;
-     height: 40px;
-     border: 1px solid #C3C3C3;
 }
 
 .location-info-btn {
@@ -84,7 +71,7 @@
     border-radius: 50px;
     border: none;
     padding: 8px;
-    height: 38px;
+    height: 48px;
     width: 140px;
     cursor: pointer;
 }
@@ -96,7 +83,7 @@
     border: none;
     padding: 8px;
     margin-left: 15px;
-    height: 38px;
+    height: 48px;
     width: 140px;
     cursor: pointer;
 }
