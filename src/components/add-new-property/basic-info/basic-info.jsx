@@ -141,7 +141,7 @@ const BasicInfo = () => {
                 {/* Handle the error, if the mandotary field is empty */}
                 {isValied && <div style={{ color: "red" }}>Please fill the mandatory fields</div>}
 
-                <button className='basic-info-cancel-btn'>Cancel</button>
+                <button className='basic-info-cancel-btn' onClick={()=>navigation('/propertyDetails')}>Cancel</button>
                 <button className='basic-info-save-btn' onClick={handleSave}>Save & Continue</button>
             </section>
         </>
