@@ -54,7 +54,7 @@ const LocationInfo = () => {
 
             const sendAllData = async () => {
                 console.log(allPropertyData);
-                let response = await axios.post('http://localhost:8080/api/v1/addnewproperty', {
+                let response = await axios.post('https://real-estate-backend-lamj.onrender.com/api/v1/addnewproperty', {
                     data: allPropertyData
                 }).then((res) => console.log(res))
             }

@@ -29,7 +29,7 @@ const Login = () =>{
         // console.log(user,password)
         await axios({
             method:"POST",
-            url:"http://localhost:8080/login",
+            url:"https://real-estate-backend-lamj.onrender.com/login",
             data:{formData},
             // redirect:"follow"
         })

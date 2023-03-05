@@ -21,7 +21,7 @@ const Signup = ()=>{
                 console.log("data is " + data)
                 await axios({
                     method:"POST",
-                    url:"http://localhost:8080/signUp",
+                    url:"https://real-estate-backend-lamj.onrender.com/signUp",
                     data:{data},
                     // redirect:"follow"
                 })

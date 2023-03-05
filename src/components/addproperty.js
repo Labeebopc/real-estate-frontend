@@ -4,7 +4,7 @@ const Addproperty = (props) => {
     const handleLogout = () => {
         console.log(window.localStorage.getItem("token"))
 
-        axios.get("http://localhost:8080/signout").then((data) => { console.log(data) })
+        axios.get("https://real-estate-backend-lamj.onrender.com/signout").then((data) => { console.log(data) })
         window.localStorage.clear();
 
 
