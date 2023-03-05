@@ -1,0 +1,35 @@
+.table{
+    margin: 2vmax;
+}
+.heading{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #284E91;
+    left: 22.62%;
+    right: 2.31%;
+    top: 23.61%;
+    bottom: 70.37%;
+    background: #FFFFFF;
+    font-weight: 200;
+}
+.box1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: #284E91;
+    /* position: absolute; */
+    left: 22.62%;
+    right: 2.31%;
+    top: 23.61%;
+    bottom: 70.37%;
+    background: #FFFFFF;
+    font-weight: 200;
+    /* margin-top: ; */
+    /* margin-top: px; */
+}
+.add{
+    margin-top: 100px;
+}

@@ -19,6 +19,7 @@ const Login = () =>{
         if(email!==""&& password!==""){
         formData.email = email
         formData.password = password
+        formData.headers = "loginData"
         console.log(formData)
         setToken({...token,email:email,password:password})
         console.log(token)
@@ -31,6 +32,7 @@ const Login = () =>{
             method:"POST",
             url:"http://localhost:8080/login",
             data:{formData},
+            headers:"login data"
             // redirect:"follow"
         })
         .then(text => {
@@ -81,17 +83,23 @@ const Login = () =>{
         }
     }
     return (
-        <div className="background">
-            <h1>Its Easy to find your best property</h1><br/>
-            <div className="box" id = "forms">
-                <input type = "email" placeholder="Enter your email" onChange={(e)=>setEmail(e.target.value)} className="user" value = {email} onBlur={(event)=> {checkErrors("email")}}/><br/><br/>
-                {!error.email.isValid ? <div style={{color: "orangered",fontSize:"16px",marginLeft:"60px",marginTop:"-26px"}}>{error.email.message}</div>:""}
-                <input type = "password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} className="user" value = {password} onBlur={(event)=> {checkErrors("password")}}/><br/><br/>
-                {!error.password.isValid ? <div style={{color: "orangered",fontSize:"16px",marginLeft:"60px",marginTop:"-26px"}}>{error.password.message}</div>:""}
-                <button onClick={handleSignIn} className="click signin">Sign In </button><br/><br/>
-                <button onClick={handleSignUp} className="click">Sign Up </button>
+        <div className="loginBox">
+            <div className="login">
+            <h1 className="logo">Logo</h1><br/>
+            <p className="text">Enter your credentials to access your account</p>
+            <div id = "forms">
+                <input type = "email" placeholder="User Id" onChange={(e)=>setEmail(e.target.value)} className="usermail" value = {email} onBlur={(event)=> {checkErrors("email")}}/><br/><br/>
+                {!error.email.isValid ? <div className="errorBox" style={{marginLeft:"100px",color:"orangered"}}>Please enter valid mail id</div>:<div className="errorBox"></div>}
+                <input type = "password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} className="userpassword" value = {password} onBlur={(event)=> {checkErrors("password")}}/><br/><br/>
+                {!error.password.isValid ? <div className="errorBox"   style={{marginLeft:"100px",color:"orangered"}}>Please Enter Valid Password</div>:<div className="errorBox"></div>}
+                <button onClick={handleSignIn} className="signin">Sign In </button><br/><br/>
+                <button onClick={handleSignUp} className="signup">Sign Up </button>
+                
+            </div>
+            
             </div>
             {/* <Addproperty loginDetails = {token} /> */}
+            <div className="lastText">Don't have an account?Please <span className="request"> Sign Up</span></div>
         </div>
     )
 }

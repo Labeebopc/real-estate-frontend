@@ -38,7 +38,7 @@ const Signup = ()=>{
             })
                 if(flag===1){
                 alert("Details were successfully added") 
-                navigate("/propertyDetails")   
+                navigate("/",{replace:true})   
                 }
             }
             else{
@@ -51,14 +51,20 @@ const Signup = ()=>{
         
     }
     
+
     return (
         <>
         <div className="form" id="forms">
-            <h3>Create New Account</h3>
-            <input type = "email" placeholder="Enter Your Mail Id" className="data" onChange={(e)=>{setMail(e.target.value)}} value={email}/><br/>
-            <input type = "password" placeholder="password" className="data" onChange={(e)=>{setPassword(e.target.value)}} value = {password}/><br/>
-            <input type = "password" placeholder="Re-enter the password" className="data" onChange={(e)=>{setConfirm(e.target.value)}} value={confirm}/><br/><br/>
-            <button className="submit" onClick={handleSubmit}>Submit</button>
+            <div className="signupBox">
+                <div className="signUp">
+                    <h1 className="Logo">Logo</h1>
+            <h3 className="text1">Create New Account</h3>
+            <input type = "email" placeholder="Mail Id" className="mail" onChange={(e)=>{setMail(e.target.value)}} value={email}/><br/>
+            <input type = "password" placeholder="Password" className="password" onChange={(e)=>{setPassword(e.target.value)}} value = {password}/><br/>
+            <input type = "password" placeholder="Confirm Password" className="cpassword" onChange={(e)=>{setConfirm(e.target.value)}} value={confirm}/><br/><br/>
+            <button className="submit" onClick={handleSubmit}>Sign Up</button>
+        </div>
+        </div>
         </div>
         
         </>

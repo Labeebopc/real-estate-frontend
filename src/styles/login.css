@@ -1,48 +1,86 @@
 body{
+    
+    /* background: #F5F5F5; */
     margin: 0px;
     padding: 0;
 }
-.background{
-    /* margin-top: -10px; */
-    background-image: url("../images/realestate.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
+.loginBox{
+    
+background-color: rgb(225, 251, 236);
+height: 100vh;
     display: flex;
-    flex-direction: column;
 }
-h1{
-    margin-top: 100px;
-    margin-left: 250px;
-    color: darkblue;
-    position: relative
+.login{
+    /* align-self: center; */
+    height: 460px;
+width: 500px;
+margin-left: 380px;
+margin-top: 30px;
+background-color: #FFFFFF;
+border-radius: 10px;
+/* border: 2px solid green; */
+
 }
-.box{
-    display: flex;
-    flex-direction: column;
-    column-gap: 50px;
-    margin-left: 300px;
+.text{
+    font-family: 'Open Sans';
+font-size: 15px;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0.25px;
+text-align: center;
+
 }
-.user{
-    width: 350px;
-    height: 30px;
-    border-radius: 30px;
-    border:none;
+.logo{
+    margin-top: 20px;
     text-align: center;
+    font-family: 'Open Sans';
+    color: #4C57B6;
 }
-.user:focus{
+.usermail{
+    margin-top: 50px;
+    margin-left: 100px;
+    width:300px ;
+    text-align: center;
+    height: 40px;
+}
+.userpassword{
+    margin-top: 10px;
+    margin-left: 100px;
+    width:300px ;
+    text-align: center;
+    height: 40px;
+}
+.usermail,.userpassword:focus{
     outline: none;
 }
-.click{
-    width: 150px;
-    height: 30px;
-    text-align: center;
+.signin{
     margin-left: 100px;
-    border-radius: 30px;
+    margin-top: 10px ;
+    width: 300px;
+    height: 40px;
+    border: none;
+    background-color: #4C57B6;
+}
+.signup{
+    margin-left: 100px;
+    /* margin-top: 5px ; */
+    width: 300px;
+    height: 40px;
+    background-color:#FFFFFF ;
     border: none;
 }
-.signin{
-    background-color: rgb(83, 83, 221);
-    color: whitesmoke;
+.lastText{
+    margin-top: 520px;
+    margin-left: -370px;
+}
+.request{
+    color: #352D66;
+    font-family: 'Open Sans';
+    font-size: 18px;
+    
+}
+.errorBox{
+    /* border: 1px solid red; */
+    height: 20px;
+    border: none;
 }
